@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+   <link rel="stylesheet" href="/profile.css">
+</head>
+<body>
+<div class="container">
+    <div class="home-icon">
+        <h1><a href="/posts">LinkedIn</a></h1>
+    </div>
+    
+    <h1>Here is your post</h1>
+    <p>Post Id: "<%= post.id %>"</p>
+    <div>
+        <% if (post.image) { %>
+            <img src="/<%= post.image %>" alt="Post Image" height="100px" width="100px">
+        <% } %>
+        <h3><%= post.username %></h3>
+        <h4><%= post.content %></h4>
+    </div>
+</div>
+</body>
+</html>

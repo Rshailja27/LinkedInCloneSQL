@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Post</title> 
+    <link rel="stylesheet" href="/style2.css">    
+</head>
+<body>
+    <div class="container">        
+        <form action="/posts" method="POST" enctype="multipart/form-data">            
+            <div class="create-data">
+                <h1><a href="/posts">LinkedIn</a></h1>
+                <h1>Create a New Post</h1>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="create-data">
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" cols="40" rows="3"></textarea>
+            </div>
+            <div class="create-data">
+                <label for="image">Upload Image:</label>
+                <input type="file" id="image" name="image">
+            </div>
+            <div class="create-data">
+                <button type="submit">Publish</button>
+            </div>
+            
+        </form>
+   </div>     
+</body>
+</html>

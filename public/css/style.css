@@ -1,0 +1,90 @@
+body{
+  box-sizing: border-box;
+  display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+  background-color: #f5efef;
+  padding: 6px 20px;
+  margin: auto;
+}
+h1{
+  color: #0077b5;
+}
+.profile-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    width: 400px;
+    border-bottom: 1px solid #8f8787;
+}
+.all-posts{
+  padding-top: 0.4rem;
+}
+
+.post{
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+    width: 400px;
+}
+ .content{
+  width: 400px;
+  border-bottom: 1px solid #888484;    
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ }
+.activities{
+  padding-top: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  width: 400px;
+}
+  input[type=text] {
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;   
+    background: #fff url("./search-icon.png") left center no-repeat;
+    background-position: 13px; 
+    background-repeat: no-repeat;
+    padding: 7px 30px 7px 30px;
+ }
+ img{
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+ }
+ .profile-pic{
+    border-radius: 50%;
+    height: 2.5rem;
+    width: 2.5rem;
+ }
+ .fa-message{
+    font-size: 1.5rem;
+    color:#0077b5;
+ }
+ a{
+  text-decoration: none;
+  color: #0077b5;
+ }
+ h3{
+  margin-top: -2.5rem;
+  margin-left: 2.8rem;
+ } 
+button {
+  background-color:#0077b5;
+  color: white;
+  padding: 8px 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #068bd3;
+}

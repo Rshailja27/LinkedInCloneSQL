@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments</title>
+    <link rel="stylesheet" href="/comments.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">    
+        <h1><a href="/posts">LinkedIn</a></h1>       
+    <div class="post">
+        <div class="column">
+            <% if (post.image) { %>
+            <a href="/posts/<%= post.id %>"> <img src="/<%= post.image %>" alt="p" class="profile-pic"></a>
+            <% } %>
+            <h3><%= post.username %></h3>
+        </div>
+        <div class="column">
+            <a href="#"><i class="fa-solid fa-plus"></i>&nbsp;Follow</a>
+        </div>
+    </div>
+    <div class="content">
+        <p><b><%= post.content %></b></p>
+    </div>
+    <div class="activities">
+        <div class="column col-25">
+            <a href="http://localhost:8080/posts/<%= post.id %>/likes">
+                <i class="fa-regular fa-thumbs-up"></i> Like <%= post.likes %></a>
+        </div>
+        <div class="column col-25">
+            <a href="http://localhost:8080/posts/<%= post.id %>/comments">
+                <i class="fa-solid fa-comment-dots"></i> Comments <%= post.commentsCount %></a>
+        </div>
+        <div class="column col-25">
+            <a href="#" onclick="document.getElementById('repost-<%= post.id %>').submit();">
+                <i class="fa-solid fa-repeat"></i> Repost <%= post.reposts %></a>
+                <form id="repost-<%= post.id %>" action="/posts/<%= post.id %>/repost" method="POST" style="display: none;">
+                </form>
+        </div>
+        <div class="column col-25">
+            <a href="#"><i class="fa-solid fa-paper-plane"></i>&nbsp;Send</a>
+        </div>
+    </div>
+    <div class="comments">
+        <div class="new-comment">
+            <form method="post" action="/posts/<%= post.id %>/comments?_method=PATCH">
+                <textarea name="comments" id="comments" cols="30" rows="2" placeholder="Write your comment"></textarea><br><br>
+                <button>Comment</button>
+            </form>
+        </div>
+        <div class="old-comment">
+            <p><b>Comments:</b></p>
+            <ul>
+                <% if (post.comments && post.comments.length > 0) { %>
+                    <% const commentsArray = JSON.parse(post.comments); %>
+                    <% for (const comment of commentsArray) { %>
+                        <li>
+                            <img src="/<%= post.image %>" alt="p" class="profile-pic">
+                            <%= comment %>
+                        </li>
+                    <% } %>
+                <% } else { %>
+                    <li>No comments yet</li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

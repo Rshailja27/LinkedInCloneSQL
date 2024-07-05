@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Main Page</title>
+        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <h1>LinkedIn</h1>
+        <div class="profile-section">
+            <div class="column col-10">
+                <img src="/shreya-ghoshal.jpg" alt="p">
+            </div>
+            <div class="column col-80">
+                <form action="/search" method="GET">
+                    <input type="text" name="userSearch" placeholder="Search"/>
+                    <button type="submit">Search</button>
+                </form>            
+            </div>
+            <div class="column col-10">
+                <i class="fa-solid fa-message"></i>
+            </div>
+        </div>
+        <div class="all-posts">
+        <% for( post of posts) { %>
+        <div class="post">
+            <div class="column">
+                <a href="/posts/<%= post.id %>"> <img src="<%= post.image %>" alt="p" class="profile-pic"></a>
+                <h3><%= post.username %></h3>
+            </div>
+            <div class="column ">
+                <a href="#"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Follow</a>
+                <a href="#" onclick="document.getElementById('delete-<%= post.id %>').submit();" style="margin-left: 0.5rem;color: #818080;">
+                    <i class="fa-solid fa-xmark"></i></a>
+                    <form method="POST" id="delete-<%= post.id %>" action="/posts/<%= post.id %>?_method=DELETE" style="display: none;">
+                        <!-- Include CSRF token if necessary -->
+                    </form>
+            </div>
+        </div>
+        <div class="content">
+        <div class="main-content"> <p><b><%= post.content %></b></p>
+        </div>
+            <div class="edit"><a href="http://localhost:8080/posts/<%= post.id %>/update">Edit</a>
+            </div>
+        </div>
+        <div class="activities">
+            <div class="column col-25">
+                <a href="http://localhost:8080/posts/<%= post.id %>/likes">
+                    <i class="fa-regular fa-thumbs-up"></i> Like <%= post.likes %></a>
+            </div>
+            <div class="column col-25">
+                <a href="http://localhost:8080/posts/<%= post.id %>/comments">
+                    <i class="fa-solid fa-comment-dots"></i> Comments <%= post.commentsCount %></a>
+            </div>
+            <div class="column col-25">
+                <a href="#" onclick="document.getElementById('repost-<%= post.id %>').submit();">
+                    <i class="fa-solid fa-repeat"></i> Repost <%= post.newRepostCount %></a>
+                    <form id="repost-<%= post.id %>" action="/posts/<%= post.id %>/repost" method="POST" style="display: none;">
+                        <!-- Include CSRF token if necessary -->
+                    </form>
+            </div>
+            <div class="column col-25">
+                <a href=""> <i class="fa-solid fa-paper-plane"></i> Send</a>
+            </div>
+        </div>
+        <% } %>
+        </div>
+
+        <div class="create-post">
+            <button> <a href="http://localhost:8080/posts/new" style="color: #fff;">Create a Post</a>
+            </button>
+        </div>
+    </div>
+</body>
+</html>
